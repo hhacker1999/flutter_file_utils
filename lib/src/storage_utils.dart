@@ -1,4 +1,5 @@
 // dart sdk
+import 'dart:async';
 import 'dart:io';
 
 import 'package:package_info/package_info.dart';
@@ -7,7 +8,7 @@ import 'package:path_provider/path_provider.dart';
 
 /// Return all **paths**
 Future<List<Directory>> getStorageList() async {
-  var paths = await getExternalStorageDirectories();
+  var paths = await (getExternalStorageDirectories() as FutureOr<List<Directory>>);
   var filteredPaths = <Directory>[];
   for (var dir in paths) {
     filteredPaths

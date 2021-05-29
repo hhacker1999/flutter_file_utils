@@ -17,7 +17,7 @@ class SimpleFileFilter extends FileFilter {
   /// Allowed allowedExtensions
   ///
   /// There must not be . before extension name
-  List<String> allowedExtensions;
+  List<String>? allowedExtensions;
 
   /// If [true] (default) then get hidden,
   /// else [false] do not get hidden
@@ -38,7 +38,7 @@ class SimpleFileFilter extends FileFilter {
 
   bool checkExtension(String path) {
     if (allowedExtensions == null) return true;
-    return allowedExtensions
+    return allowedExtensions!
         .contains(pathlib.extension(path).replaceFirst('.', ''));
   }
 
@@ -109,7 +109,7 @@ class SimpleFileFilter extends FileFilter {
     }
   }
 
-  static bool validExtensions(List<String> extensions) {
+  static bool validExtensions(List<String>? extensions) {
     if (extensions != null) {
       for (var extension in extensions) {
         if (extension.startsWith('.')) {
